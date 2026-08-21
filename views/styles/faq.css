@@ -1,0 +1,49 @@
+/* ============================================================
+   VISTA (MVC) — Estilos de Preguntas Frecuentes
+   Autocontenido: define su propio fondo y colores de texto,
+   por lo que es legible tanto en tema oscuro como claro.
+   ============================================================ */
+
+[data-testid="stExpander"] {
+    background: linear-gradient(180deg, #0F1F38 0%, #0A1628 100%);
+    border: 1px solid #1E3A5F;
+    border-left: 3px solid #3B82C4;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+    color: #C9D4E4; /* color base heredado por todo el interior */
+}
+
+/* El cuerpo del expandidor no debe pintar el fondo del tema
+   (blanco en tema claro) sobre nuestro degradado oscuro */
+[data-testid="stExpander"] details,
+[data-testid="stExpander"] details > div,
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stExpander"] summary {
+    color: #E8EEF7;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+[data-testid="stExpander"] summary:hover {
+    color: #6EA8DC !important;
+}
+
+[data-testid="stExpander"] summary:hover svg,
+[data-testid="stExpander"] summary svg {
+    stroke: #7E8CA3;
+}
+
+[data-testid="stExpander"] p,
+[data-testid="stExpander"] li,
+[data-testid="stExpander"] span {
+    color: #AEBBD1;
+    font-size: 0.88rem;
+    line-height: 1.55;
+}

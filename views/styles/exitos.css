@@ -1,0 +1,53 @@
+/* ============================================================
+   VISTA (MVC) — Estilos de las tarjetas de Biblioteca de Éxitos
+   Paleta consistente con el footer: azul marino / gris
+   ============================================================ */
+
+.exito-card {
+    background: linear-gradient(180deg, #0F1F38 0%, #0A1628 100%);
+    border: 1px solid #1E3A5F;
+    border-left: 3px solid #3B82C4;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    color: #C9D4E4; /* texto legible en cualquier tema */
+    height: 100%;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.exito-card__titulo {
+    color: #E8EEF7;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.4rem;
+}
+
+.exito-card__desc {
+    font-size: 0.85rem;
+    color: #9FB0C8;
+    line-height: 1.45;
+}
+
+.exito-card__pie {
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.exito-card__resultado {
+    font-size: 0.75rem;
+    color: #7ED0A8;
+    background: rgba(126, 208, 168, 0.08);
+    border: 1px solid rgba(126, 208, 168, 0.25);
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.exito-card__anio {
+    font-size: 0.78rem;
+    color: #5B6B84;
+    font-variant-numeric: tabular-nums;
+}

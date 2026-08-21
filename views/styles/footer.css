@@ -1,0 +1,95 @@
+/* ============================================================
+   VISTA (MVC) — Estilos del pie de página
+   Paleta: azul marino / gris profesional (seriedad y temple)
+   ============================================================ */
+
+/* Oculta el footer por defecto de Streamlit */
+footer[data-testid="stFooter"] {
+    display: none !important;
+}
+
+.app-footer {
+    margin-top: 3rem;
+    background: linear-gradient(180deg, #0F1F38 0%, #0A1628 100%);
+    border-top: 2px solid #1E3A5F;
+    color: #C9D4E4; /* texto legible en cualquier tema */
+    padding: 1.6rem 2rem 1.4rem 2rem;
+    border-radius: 10px 10px 0 0;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Evita que el tema claro pinte enlaces o textos por defecto */
+.app-footer a,
+.app-footer span,
+.app-footer div {
+    text-decoration-color: currentColor;
+}
+
+.app-footer__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem 2rem;
+}
+
+.app-footer__brand {
+    font-size: 1.02rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #E8EEF7;
+}
+
+.app-footer__tagline {
+    font-size: 0.82rem;
+    color: #7E8CA3;
+    margin-top: 0.25rem;
+    letter-spacing: 0.02em;
+}
+
+.app-footer__links {
+    display: flex;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+}
+
+.app-footer__links a {
+    color: #9FB0C8;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+}
+
+.app-footer__links a:hover,
+.app-footer__links a:focus {
+    color: #3B82C4;
+    border-bottom: 1px solid #3B82C4;
+}
+
+.app-footer__bottom {
+    margin-top: 1.1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(30, 58, 95, 0.55);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    font-size: 0.78rem;
+    color: #7E8CA3;
+}
+
+.app-footer__version {
+    color: #5B6B84;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Móvil: apila las secciones */
+@media (max-width: 640px) {
+    .app-footer__grid,
+    .app-footer__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

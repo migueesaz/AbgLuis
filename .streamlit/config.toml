@@ -1,0 +1,4 @@
+# Desactiva la navegación lateral automática de Streamlit.
+# El menú lo dibuja nuestra propia vista (views/components/nav_view.py).
+[client]
+showSidebarNavigation = false
