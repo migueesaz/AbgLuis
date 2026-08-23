@@ -2,7 +2,3 @@
 # El menú lo dibuja nuestra propia vista (views/components/nav_view.py).
 [client]
 showSidebarNavigation = false
-
-# Sirve la carpeta ./static por HTTP (video, imágenes pesadas, etc.).
-[server]
-enableStaticServing = true

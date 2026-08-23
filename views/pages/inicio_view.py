@@ -4,6 +4,7 @@ Presentación principal: cabecera con foto y CTA, puntos clave y reel en bucle.
 """
 import base64
 import mimetypes
+import re
 from pathlib import Path
 
 import streamlit as st
@@ -14,6 +15,10 @@ from views.components.header_view import render_header
 from views.utils_html import compactar_html
 
 _CSS_PATH = Path(__file__).resolve().parents[1] / "styles" / "inicio.css"
+
+_YT_PATRON = re.compile(
+    r"(?:youtu\.be/|youtube\.com/(?:watch\?v=|shorts/|embed/))([\w-]{11})"
+)
 _ROOT = Path(__file__).resolve().parents[2]
 
 _PUNTOS_CLAVE = (
@@ -35,35 +40,38 @@ def _punto_html(icono: str, titulo: str, texto: str) -> str:
     """
 
 
-def _fuente_video() -> str | None:
-    """Devuelve la fuente del video: URL directa, /static/ o data-URI."""
+def _youtube_id(url: str) -> str | None:
+    """Extrae el ID de un enlace de YouTube (watch, shorts, youtu.be)."""
+    m = _YT_PATRON.search(url)
+    return m.group(1) if m else None
+
+
+def _fuente_video() -> tuple[str, bool] | None:
+    """Devuelve (src, es_youtube) o None si no hay video disponible."""
     fuente = VIDEO_PRINCIPAL.fuente
+    if not fuente:
+        return None
     if fuente.startswith(("http://", "https://")):
-        return fuente
+        yt_id = _youtube_id(fuente)
+        if yt_id:
+            src = (
+                f"https://www.youtube-nocookie.com/embed/{yt_id}"
+                f"?autoplay=1&mute=1&loop=1&playlist={yt_id}"
+                f"&playsinline=1&rel=0"
+            )
+            return src, True
+        return fuente, False
     ruta = _ROOT / fuente
     if not ruta.exists():
         return None
-    if fuente.replace("\\", "/").startswith("static/"):
-        from urllib.parse import quote
-        return "/app/" + quote(fuente.replace("\\", "/"))
     mime = mimetypes.guess_type(ruta.name)[0] or "video/mp4"
     b64 = base64.b64encode(ruta.read_bytes()).decode()
-    return f"data:{mime};base64,{b64}"
-
-
-def _poster_video() -> str:
-    """Imagen de previsualización del video (data-URI de la foto de perfil)."""
-    ruta = _ROOT / PERFIL.foto_ruta
-    if not ruta.exists():
-        return ""
-    mime = mimetypes.guess_type(ruta.name)[0] or "image/jpeg"
-    b64 = base64.b64encode(ruta.read_bytes()).decode()
-    return f' poster="data:{mime};base64,{b64}"'
+    return f"data:{mime};base64,{b64}", False
 
 
 def _render_video() -> None:
-    src = _fuente_video()
-    if not src:
+    fuente = _fuente_video()
+    if not fuente:
         st.markdown(
             compactar_html(
                 f"""
@@ -82,11 +90,21 @@ def _render_video() -> None:
     st.subheader(f"🎬 {VIDEO_PRINCIPAL.titulo}")
     if VIDEO_PRINCIPAL.descripcion:
         st.caption(VIDEO_PRINCIPAL.descripcion)
+
+    src, es_youtube = fuente
+    if es_youtube:
+        reproductor = (
+            f'<iframe class="inicio-reel__video" src="{src}" '
+            'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'
+        )
+    else:
+        reproductor = (
+            f'<video class="inicio-reel__video" src="{src}" '
+            "autoplay muted loop playsinline controls></video>"
+        )
     html = f"""
     <section class="inicio-video">
-        <div class="inicio-reel">
-            <video class="inicio-reel__video" src="{src}"{_poster_video()} autoplay muted loop playsinline controls preload="metadata"></video>
-        </div>
+        <div class="inicio-reel">{reproductor}</div>
     </section>
     """
     st.markdown(compactar_html(html), unsafe_allow_html=True)
