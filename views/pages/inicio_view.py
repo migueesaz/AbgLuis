@@ -51,6 +51,16 @@ def _fuente_video() -> str | None:
     return f"data:{mime};base64,{b64}"
 
 
+def _poster_video() -> str:
+    """Imagen de previsualización del video (data-URI de la foto de perfil)."""
+    ruta = _ROOT / PERFIL.foto_ruta
+    if not ruta.exists():
+        return ""
+    mime = mimetypes.guess_type(ruta.name)[0] or "image/jpeg"
+    b64 = base64.b64encode(ruta.read_bytes()).decode()
+    return f' poster="data:{mime};base64,{b64}"'
+
+
 def _render_video() -> None:
     src = _fuente_video()
     if not src:
@@ -75,7 +85,7 @@ def _render_video() -> None:
     html = f"""
     <section class="inicio-video">
         <div class="inicio-reel">
-            <video class="inicio-reel__video" src="{src}" autoplay muted loop playsinline controls preload="metadata"></video>
+            <video class="inicio-reel__video" src="{src}"{_poster_video()} autoplay muted loop playsinline controls preload="metadata"></video>
         </div>
     </section>
     """
