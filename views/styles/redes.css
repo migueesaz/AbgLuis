@@ -1,0 +1,39 @@
+/* ============================================================
+   VISTA (MVC) — Botones de redes sociales en la barra superior
+   Paleta azul marino / gris profesional
+   ============================================================ */
+
+.barra-redes {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.55rem;
+    padding-top: 0.35rem;
+}
+
+.btn-red {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid #1E3A5F;
+    background: linear-gradient(180deg, #101E36 0%, #0C1830 100%);
+    color: #9FB0C8;
+    transition: transform 0.15s ease, color 0.15s ease,
+        border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-red svg {
+    width: 17px;
+    height: 17px;
+}
+
+.btn-red:hover,
+.btn-red:focus-visible {
+    transform: translateY(-2px);
+    color: #6FA8DC;
+    border-color: #3B82C4;
+    box-shadow: 0 6px 16px rgba(59, 130, 196, 0.3);
+}

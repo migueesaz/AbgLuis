@@ -158,9 +158,9 @@ Crear un espacio para contenido de formato corto.
 
 Preparar la estructura para conectar LEX con las redes profesionales del abogado.
 
-- [ ] Definir redes sociales oficiales.
-- [ ] Crear sección o botones de redes sociales.
-- [ ] Agregar enlaces oficiales.
+- [x] Definir redes sociales oficiales. *(Instagram: @sanchezluis1975 · TikTok: @luis_sanchez_1975)*
+- [x] Crear sección o botones de redes sociales.
+- [x] Agregar enlaces oficiales.
 - [ ] Revisar diseño de los iconos.
 - [ ] Integrar redes sociales con el contenido multimedia.
 
