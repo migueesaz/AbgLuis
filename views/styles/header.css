@@ -1,7 +1,32 @@
 /* ============================================================
-   VISTA (MVC) — Cabecera principal (hero) del inicio
+   VISTA (MVC) — Marca LEX (banner superior) y cabecera hero
    Paleta azul marino / gris profesional
    ============================================================ */
+
+.lex-marca {
+    text-align: center;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 3.4rem;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 0.6em;
+    text-indent: 0.6em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    background: linear-gradient(90deg, #E8EEF7 0%, #6FA8DC 55%, #3B82C4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 22px rgba(59, 130, 196, 0.35));
+}
+
+@media (max-width: 640px) {
+    .lex-marca {
+        font-size: 2.2rem;
+        letter-spacing: 0.45em;
+        text-indent: 0.45em;
+    }
+}
 
 .hero-header {
     display: flex;
@@ -65,20 +90,6 @@
 
 .hero-header__contenido {
     min-width: 0;
-}
-
-.hero-header__marca {
-    margin: 0 0 0.35rem 0;
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: 0.55em;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, #E8EEF7 0%, #6FA8DC 55%, #3B82C4 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 0 22px rgba(59, 130, 196, 0.35));
 }
 
 .hero-header__descripcion {
@@ -161,9 +172,5 @@
     }
     .hero-header__nombre {
         font-size: 1.5rem;
-    }
-    .hero-header__marca {
-        font-size: 2rem;
-        letter-spacing: 0.4em;
     }
 }

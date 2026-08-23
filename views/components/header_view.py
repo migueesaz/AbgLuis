@@ -60,7 +60,6 @@ def _build_html(perfil: Perfil) -> str:
     <header class="hero-header">
         {foto_html}
         <div class="hero-header__contenido">
-            <div class="hero-header__marca">{perfil.marca}</div>
             <h1 class="hero-header__nombre">{perfil.nombre}</h1>
             <p class="hero-header__titulo">{titulo}</p>
             {descripcion_html}
@@ -71,6 +70,11 @@ def _build_html(perfil: Perfil) -> str:
 
 
 def render_header(perfil: Perfil) -> None:
-    """Pinta la cabecera principal del inicio."""
+    """Pinta la marca LEX y la cabecera principal del inicio."""
     st.markdown(f"<style>{_CSS_PATH.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
+    st.markdown(compactar_html(_marca_html(perfil)), unsafe_allow_html=True)
     st.markdown(compactar_html(_build_html(perfil)), unsafe_allow_html=True)
+
+
+def _marca_html(perfil: Perfil) -> str:
+    return f'<div class="lex-marca">{perfil.marca}</div>'
