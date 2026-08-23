@@ -6,11 +6,13 @@ from pathlib import Path
 
 import streamlit as st
 
+from models.media_model import VIDEO_PRINCIPAL
 from models.perfil_model import PERFIL
 from views.components.header_view import render_header
 from views.utils_html import compactar_html
 
 _CSS_PATH = Path(__file__).resolve().parents[1] / "styles" / "inicio.css"
+_ROOT = Path(__file__).resolve().parents[2]
 
 _PUNTOS_CLAVE = (
     ("🎯", "Defensa penal estratégica", "Diseño de la estrategia según cada caso."),
@@ -31,9 +33,38 @@ def _punto_html(icono: str, titulo: str, texto: str) -> str:
     """
 
 
+def _render_video() -> None:
+    if not VIDEO_PRINCIPAL.fuente:
+        st.markdown(
+            compactar_html(
+                f"""
+                <section class="inicio-video">
+                    <div class="inicio-video__marco">
+                        <span class="inicio-video__play"></span>
+                        <p class="inicio-video__texto">Video de presentación — próximamente</p>
+                    </div>
+                </section>
+                """
+            ),
+            unsafe_allow_html=True,
+        )
+        return
+
+    st.subheader(f"🎬 {VIDEO_PRINCIPAL.titulo}")
+    if VIDEO_PRINCIPAL.descripcion:
+        st.caption(VIDEO_PRINCIPAL.descripcion)
+    fuente = VIDEO_PRINCIPAL.fuente
+    if not fuente.startswith(("http://", "https://")):
+        fuente = str(_ROOT / fuente)
+    st.video(fuente)
+
+
 def render_inicio() -> None:
     st.markdown(f"<style>{_CSS_PATH.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
     render_header(PERFIL)
 
     puntos = "".join(_punto_html(i, t, d) for i, t, d in _PUNTOS_CLAVE)
     st.markdown(compactar_html(f'<section class="inicio-puntos">{puntos}</section>'), unsafe_allow_html=True)
+
+    st.divider()
+    _render_video()

@@ -68,18 +68,17 @@
 }
 
 .hero-header__marca {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    padding: 0.25rem 0.9rem;
-    border: 1px solid rgba(59, 130, 196, 0.55);
-    border-radius: 999px;
-    background: rgba(59, 130, 196, 0.12);
-    color: #6FA8DC;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.45em;
-    text-indent: 0.45em; /* compensa el letter-spacing final */
+    margin: 0 0 0.35rem 0;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.55em;
     text-transform: uppercase;
+    background: linear-gradient(90deg, #E8EEF7 0%, #6FA8DC 55%, #3B82C4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 22px rgba(59, 130, 196, 0.35));
 }
 
 .hero-header__descripcion {
@@ -162,5 +161,9 @@
     }
     .hero-header__nombre {
         font-size: 1.5rem;
+    }
+    .hero-header__marca {
+        font-size: 2rem;
+        letter-spacing: 0.4em;
     }
 }
