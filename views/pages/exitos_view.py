@@ -7,6 +7,7 @@ from pathlib import Path
 import streamlit as st
 
 from models.exitos_model import EXITOS
+from views.utils_html import compactar_html
 
 _CSS_PATH = Path(__file__).resolve().parents[1] / "styles" / "exitos.css"
 
@@ -34,6 +35,8 @@ def render_exitos() -> None:
     for i, exito in enumerate(EXITOS):
         with cols[i % 2]:
             st.markdown(
-                _card_html(exito.titulo, exito.descripcion, exito.resultado, exito.anio),
+                compactar_html(
+                    _card_html(exito.titulo, exito.descripcion, exito.resultado, exito.anio)
+                ),
                 unsafe_allow_html=True,
             )

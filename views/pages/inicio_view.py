@@ -8,6 +8,7 @@ import streamlit as st
 
 from models.perfil_model import PERFIL
 from views.components.header_view import render_header
+from views.utils_html import compactar_html
 
 _CSS_PATH = Path(__file__).resolve().parents[1] / "styles" / "inicio.css"
 
@@ -35,4 +36,4 @@ def render_inicio() -> None:
     render_header(PERFIL)
 
     puntos = "".join(_punto_html(i, t, d) for i, t, d in _PUNTOS_CLAVE)
-    st.markdown(f'<section class="inicio-puntos">{puntos}</section>', unsafe_allow_html=True)
+    st.markdown(compactar_html(f'<section class="inicio-puntos">{puntos}</section>'), unsafe_allow_html=True)

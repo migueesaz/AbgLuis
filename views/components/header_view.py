@@ -9,6 +9,7 @@ from pathlib import Path
 import streamlit as st
 
 from models.perfil_model import Perfil, enlace_whatsapp
+from views.utils_html import compactar_html
 
 _CSS_PATH = Path(__file__).resolve().parents[1] / "styles" / "header.css"
 _ROOT = Path(__file__).resolve().parents[2]
@@ -71,4 +72,4 @@ def _build_html(perfil: Perfil) -> str:
 def render_header(perfil: Perfil) -> None:
     """Pinta la cabecera principal del inicio."""
     st.markdown(f"<style>{_CSS_PATH.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
-    st.markdown(_build_html(perfil), unsafe_allow_html=True)
+    st.markdown(compactar_html(_build_html(perfil)), unsafe_allow_html=True)
