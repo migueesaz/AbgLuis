@@ -6,18 +6,24 @@
 .lex-marca {
     text-align: center;
     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    font-size: 3.4rem;
+    font-size: 3.2rem;
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: 0.6em;
     text-indent: 0.6em;
     text-transform: uppercase;
-    margin-bottom: 0.9rem;
-    background: linear-gradient(90deg, #E8EEF7 0%, #6FA8DC 55%, #3B82C4 100%);
+    margin-bottom: 0.6rem;
+    background: linear-gradient(90deg, #F4E8C1 0%, #D9B95C 45%, #A8842C 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(0 0 22px rgba(59, 130, 196, 0.35));
+    filter: drop-shadow(0 0 18px rgba(217, 185, 92, 0.28));
+    animation: lex-aparecer 0.9s ease-out both;
+}
+
+@keyframes lex-aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @media (max-width: 640px) {

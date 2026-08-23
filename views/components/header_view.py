@@ -8,7 +8,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from models.perfil_model import Perfil, enlace_whatsapp
+from models.perfil_model import PERFIL, Perfil, enlace_whatsapp
 from views.utils_html import compactar_html
 
 _CSS_PATH = Path(__file__).resolve().parents[1] / "styles" / "header.css"
@@ -69,10 +69,15 @@ def _build_html(perfil: Perfil) -> str:
     """
 
 
-def render_header(perfil: Perfil) -> None:
-    """Pinta la marca LEX y la cabecera principal del inicio."""
+def render_marca() -> None:
+    """Pinta el branding global LEX (encima de la navegación)."""
     st.markdown(f"<style>{_CSS_PATH.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
-    st.markdown(compactar_html(_marca_html(perfil)), unsafe_allow_html=True)
+    st.markdown(compactar_html(_marca_html(PERFIL)), unsafe_allow_html=True)
+
+
+def render_header(perfil: Perfil) -> None:
+    """Pinta la cabecera principal (hero) del abogado en el inicio."""
+    st.markdown(f"<style>{_CSS_PATH.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
     st.markdown(compactar_html(_build_html(perfil)), unsafe_allow_html=True)
 
 
