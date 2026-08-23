@@ -36,13 +36,16 @@ def _punto_html(icono: str, titulo: str, texto: str) -> str:
 
 
 def _fuente_video() -> str | None:
-    """Devuelve la fuente del video como data-URI (archivo) o URL directa."""
+    """Devuelve la fuente del video: URL directa, /static/ o data-URI."""
     fuente = VIDEO_PRINCIPAL.fuente
     if fuente.startswith(("http://", "https://")):
         return fuente
     ruta = _ROOT / fuente
     if not ruta.exists():
         return None
+    if fuente.replace("\\", "/").startswith("static/"):
+        from urllib.parse import quote
+        return "/app/" + quote(fuente.replace("\\", "/"))
     mime = mimetypes.guess_type(ruta.name)[0] or "video/mp4"
     b64 = base64.b64encode(ruta.read_bytes()).decode()
     return f"data:{mime};base64,{b64}"
@@ -72,7 +75,7 @@ def _render_video() -> None:
     html = f"""
     <section class="inicio-video">
         <div class="inicio-reel">
-            <video class="inicio-reel__video" src="{src}" autoplay muted loop playsinline></video>
+            <video class="inicio-reel__video" src="{src}" autoplay muted loop playsinline controls preload="metadata"></video>
         </div>
     </section>
     """
