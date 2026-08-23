@@ -79,6 +79,16 @@ def _fuente_video() -> tuple[str, str] | None:
     return f"data:{mime};base64,{b64}", "directo"
 
 
+def _imagen_data_uri() -> str | None:
+    """Devuelve la imagen acompañante como data-URI, o None si no existe."""
+    ruta = _ROOT / IMAGEN_VIDEO.ruta
+    if not ruta.exists():
+        return None
+    mime = mimetypes.guess_type(ruta.name)[0] or "image/png"
+    b64 = base64.b64encode(ruta.read_bytes()).decode()
+    return f"data:{mime};base64,{b64}"
+
+
 def _render_video() -> None:
     fuente = _fuente_video()
     if not fuente:
@@ -117,11 +127,23 @@ def _render_video() -> None:
             f'<video class="inicio-reel__video" src="{src}" '
             "autoplay muted loop playsinline controls></video>"
         )
-    html = f"""
-    <section class="inicio-video">
-        <div class="inicio-reel">{reproductor}</div>
-    </section>
-    """
+
+    img_uri = _imagen_data_uri()
+    if img_uri:
+        html = f"""
+        <section class="inicio-duo">
+            <div class="inicio-duo__item">{reproductor}</div>
+            <div class="inicio-duo__item">
+                <img class="inicio-duo__foto" src="{img_uri}" alt="{IMAGEN_VIDEO.alt}">
+            </div>
+        </section>
+        """
+    else:
+        html = f"""
+        <section class="inicio-video">
+            <div class="inicio-reel">{reproductor}</div>
+        </section>
+        """
     st.markdown(compactar_html(html), unsafe_allow_html=True)
 
 
