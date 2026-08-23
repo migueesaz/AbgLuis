@@ -148,7 +148,7 @@ Crear un espacio para contenido de formato corto.
 ## 🎥 Videos promocionales
 
 - [ ] Crear video de presentación profesional.
-- [x] Crear espacio para video principal. *(marco preparado en el inicio; configurar fuente en `models/media_model.py`)*
+- [x] Crear espacio para video principal. *(reel alojado en Cloudflare R2, en bucle; fuente en `models/media_model.py`)*
 - [ ] Preparar sección de contenido promocional.
 - [ ] Incorporar videos relacionados con la práctica profesional.
 
