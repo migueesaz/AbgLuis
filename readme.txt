@@ -50,6 +50,8 @@ Crear una sección dedicada exclusivamente a mostrar la trayectoria profesional 
 
 ## Información
 
+> Los campos se encuentran como placeholders en `models/trayectoria_model.py`, listos para rellenar.
+
 - [ ] Definir información profesional que será publicada.
 - [ ] Agregar formación académica.
 - [ ] Agregar experiencia profesional.
@@ -60,11 +62,11 @@ Crear una sección dedicada exclusivamente a mostrar la trayectoria profesional 
 
 ## Diseño
 
-- [ ] Diseñar la sección visualmente.
-- [ ] Crear estructura para presentar la trayectoria.
-- [ ] Evaluar implementación como línea de tiempo.
-- [ ] Crear componentes reutilizables para cada etapa.
-- [ ] Integrar la sección con la navegación principal.
+- [x] Diseñar la sección visualmente.
+- [x] Crear estructura para presentar la trayectoria. *(bloques por categoría)*
+- [x] Evaluar implementación como línea de tiempo. *(implementada)*
+- [x] Crear componentes reutilizables para cada etapa.
+- [x] Integrar la sección con la navegación principal.
 
 ---
 
@@ -76,12 +78,12 @@ Implementar WhatsApp como principal medio de contacto entre el visitante y el ab
 - [x] Crear enlace directo de WhatsApp.
 - [x] Crear botón de contacto.
 - [x] Integrar el botón en la página principal.
-- [ ] Evaluar ubicación del botón dentro del sitio.
+- [x] Evaluar ubicación del botón dentro del sitio.
 - [x] Agregar una llamada a la acción.
-- [ ] Probar el enlace desde computadora.
-- [ ] Probar el enlace desde dispositivo móvil.
-- [ ] Verificar que el enlace abra correctamente WhatsApp.
-- [ ] Revisar el diseño del botón.
+- [x] Probar el enlace desde computadora.
+- [x] Probar el enlace desde dispositivo móvil.
+- [x] Verificar que el enlace abra correctamente WhatsApp.
+- [x] Revisar el diseño del botón.
 
 ---
 
@@ -108,11 +110,11 @@ La Biblioteca de Éxitos actualmente utiliza información demostrativa.
 
 - [x] Crear sección de preguntas frecuentes.
 - [x] Crear preguntas desplegables.
-- [ ] Revisar el contenido actual.
+- [x] Revisar el contenido actual. *(alineado al servicio: honorarios por consulta, contacto por WhatsApp, enfoque penal)*
 - [ ] Validar las respuestas con el abogado.
-- [ ] Agregar preguntas adicionales.
+- [x] Agregar preguntas adicionales.
 - [ ] Organizar las preguntas por categorías.
-- [ ] Revisar que la información sea clara para personas que no tengan conocimientos jurídicos.
+- [x] Revisar que la información sea clara para personas que no tengan conocimientos jurídicos.
 
 ---
 

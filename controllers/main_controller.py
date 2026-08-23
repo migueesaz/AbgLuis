@@ -6,18 +6,14 @@ from models.footer_model import FooterConfig
 from models.navegacion_model import PAGINAS
 from views.components.footer_view import render_footer
 from views.components.tabs_view import render_tabs
-from views.pages.exitos_view import render_exitos
 from views.pages.faq_view import render_faq
-from views.pages.generic_view import render_generic
 from views.pages.inicio_view import render_inicio
+from views.pages.trayectoria_view import render_trayectoria
 
 _RUTA_VISTAS = {
     "inicio": render_inicio,
-    "exitos": render_exitos,
+    "trayectoria": render_trayectoria,
     "faq": render_faq,
-    "seccion_1": render_generic,
-    "seccion_2": render_generic,
-    "seccion_3": render_generic,
 }
 
 

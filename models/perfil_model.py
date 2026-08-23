@@ -25,7 +25,7 @@ PERFIL = Perfil(
         "Ministerio Público. Acompaño a mis clientes en cada etapa del proceso "
         "penal con rigor técnico, estrategia clara y compromiso absoluto con su defensa."
     ),
-    whatsapp_numero="584129072234",
+    whatsapp_numero="584149027746",
 )
 
 _ENLACE_WHATSAPP = (

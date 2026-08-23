@@ -1,5 +1,7 @@
 """
 MODELO (MVC) — Datos de Preguntas Frecuentes.
+Respuestas redactadas para personas sin conocimientos jurídicos.
+Pendiente de validación final por el abogado.
 """
 from dataclasses import dataclass
 
@@ -12,41 +14,51 @@ class PreguntaFrecuente:
 
 PREGUNTAS_FRECUENTES: tuple[PreguntaFrecuente, ...] = (
     PreguntaFrecuente(
+        pregunta="¿Toda consulta genera honorarios?",
+        respuesta=(
+            "Sí. Todas las consultas son servicios profesionales y generan "
+            "honorarios. En la primera conversación le informamos el costo antes "
+            "de iniciar, sin sorpresas ni cargos ocultos."
+        ),
+    ),
+    PreguntaFrecuente(
+        pregunta="¿Cómo se determinan los honorarios de mi caso?",
+        respuesta=(
+            "Dependen del tipo de proceso, su complejidad y el trabajo que "
+            "requiere. Después de escuchar su caso se le presenta un presupuesto "
+            "claro y por escrito antes de comenzar."
+        ),
+    ),
+    PreguntaFrecuente(
         pregunta="¿Cómo agendo una consulta?",
         respuesta=(
-            "Puede agendar a través del apartado de Contacto, por teléfono o "
-            "correo electrónico. Confirmamos la cita en un plazo máximo de 24 horas."
+            "La vía más rápida es el botón de WhatsApp de esta página. También "
+            "puede dejar sus datos y será contactado para coordinar fecha y hora."
         ),
     ),
     PreguntaFrecuente(
-        pregunta="¿La primera consulta tiene costo?",
+        pregunta="¿Qué documentos debo tener listos para la consulta?",
         respuesta=(
-            "La primera consulta de valoración es sin costo. En ella evaluamos "
-            "su caso y le informamos sobre las opciones y honorarios aplicables."
+            "Su documento de identidad y todo lo relacionado con su caso: "
+            "notificaciones, citaciones, contratos, mensajes, correos, recibos o "
+            "fotografías. Si no tiene algo, igual podemos orientarlo."
         ),
     ),
     PreguntaFrecuente(
-        pregunta="¿Qué documentos debo llevar a la consulta?",
+        pregunta="¿En qué áreas del derecho se ofrece asesoría?",
         respuesta=(
-            "Documento de identidad, cualquier escrito o notificación relacionada "
-            "con su caso, contratos firmados y pruebas disponibles (correos, "
-            "recibos, fotografías)."
+            "La especialidad principal es el Derecho Penal: defensas, "
+            "acompañamiento en investigaciones, denuncias y procesos ante los "
+            "tribunales. Para otros temas se le indicará con honestidad si su "
+            "caso puede atenderse o si requiere otro especialista."
         ),
     ),
     PreguntaFrecuente(
-        pregunta="¿Cuánto puede durar mi proceso?",
+        pregunta="¿La información que comparta es confidencial?",
         respuesta=(
-            "Depende del tipo de caso y de la carga del juzgado. Tras revisar su "
-            "expediente le entregamos una hoja de ruta con plazos estimados y "
-            "etapas del proceso."
-        ),
-    ),
-    PreguntaFrecuente(
-        pregunta="¿Mi información es confidencial?",
-        respuesta=(
-            "Sí. Toda la información que comparta está protegida por el secreto "
-            "profesional abogado–cliente, incluso si decide no continuar con el "
-            "servicio."
+            "Totalmente. Todo lo que cuente está protegido por el secreto "
+            "profesional abogado–cliente, incluso si decide no contratar el "
+            "servicio después de la consulta."
         ),
     ),
 )

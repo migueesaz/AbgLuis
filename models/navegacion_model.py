@@ -15,11 +15,8 @@ class PaginaConfig:
 
 PAGINAS: tuple[PaginaConfig, ...] = (
     PaginaConfig(id="inicio", titulo="Inicio", icono="🏠"),
-    PaginaConfig(id="exitos", icono="🏆"),
+    PaginaConfig(id="trayectoria", titulo="Trayectoria", icono="🏛️"),
     PaginaConfig(id="faq", titulo="Preguntas Frecuentes", icono="❓"),
-    PaginaConfig(id="seccion_1", icono="📁"),
-    PaginaConfig(id="seccion_2", icono="📅"),
-    PaginaConfig(id="seccion_3", icono="✉️"),
 )
 
 
