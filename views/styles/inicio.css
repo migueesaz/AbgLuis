@@ -97,3 +97,22 @@
     font-size: 0.9rem;
     letter-spacing: 0.04em;
 }
+
+/* --- Reel vertical en bucle ------------------------------------------ */
+
+.inicio-reel {
+    width: 100%;
+    max-width: 300px;
+    margin-inline: auto;
+}
+
+.inicio-reel__video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border: 1px solid #1E3A5F;
+    border-bottom: 3px solid #3B82C4;
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}

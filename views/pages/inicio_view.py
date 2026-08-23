@@ -1,7 +1,9 @@
 """
 VISTA (MVC) — Página de inicio.
-Presentación principal: cabecera con foto y CTA, más franja de puntos clave.
+Presentación principal: cabecera con foto y CTA, puntos clave y reel en bucle.
 """
+import base64
+import mimetypes
 from pathlib import Path
 
 import streamlit as st
@@ -33,8 +35,22 @@ def _punto_html(icono: str, titulo: str, texto: str) -> str:
     """
 
 
+def _fuente_video() -> str | None:
+    """Devuelve la fuente del video como data-URI (archivo) o URL directa."""
+    fuente = VIDEO_PRINCIPAL.fuente
+    if fuente.startswith(("http://", "https://")):
+        return fuente
+    ruta = _ROOT / fuente
+    if not ruta.exists():
+        return None
+    mime = mimetypes.guess_type(ruta.name)[0] or "video/mp4"
+    b64 = base64.b64encode(ruta.read_bytes()).decode()
+    return f"data:{mime};base64,{b64}"
+
+
 def _render_video() -> None:
-    if not VIDEO_PRINCIPAL.fuente:
+    src = _fuente_video()
+    if not src:
         st.markdown(
             compactar_html(
                 f"""
@@ -53,10 +69,14 @@ def _render_video() -> None:
     st.subheader(f"🎬 {VIDEO_PRINCIPAL.titulo}")
     if VIDEO_PRINCIPAL.descripcion:
         st.caption(VIDEO_PRINCIPAL.descripcion)
-    fuente = VIDEO_PRINCIPAL.fuente
-    if not fuente.startswith(("http://", "https://")):
-        fuente = str(_ROOT / fuente)
-    st.video(fuente)
+    html = f"""
+    <section class="inicio-video">
+        <div class="inicio-reel">
+            <video class="inicio-reel__video" src="{src}" autoplay muted loop playsinline></video>
+        </div>
+    </section>
+    """
+    st.markdown(compactar_html(html), unsafe_allow_html=True)
 
 
 def render_inicio() -> None:
