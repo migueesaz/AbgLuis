@@ -8,11 +8,20 @@ from pathlib import Path
 
 import streamlit as st
 
-from models.perfil_model import Perfil, enlace_whatsapp
+from models.perfil_model import PERFIL, Perfil, enlace_whatsapp
 from views.utils_html import compactar_html
 
 _CSS_PATH = Path(__file__).resolve().parents[1] / "styles" / "header.css"
 _ROOT = Path(__file__).resolve().parents[2]
+_CSS_CARGADA = False
+
+
+def _inyectar_css() -> None:
+    """Carga la hoja de estilos una sola vez por sesión."""
+    global _CSS_CARGADA
+    if not _CSS_CARGADA:
+        st.markdown(f"<style>{_CSS_PATH.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
+        _CSS_CARGADA = True
 
 
 def _foto_data_uri(perfil: Perfil) -> str | None:
@@ -69,10 +78,15 @@ def _build_html(perfil: Perfil) -> str:
     """
 
 
+def render_marca() -> None:
+    """Pinta el banner LEX en la parte superior de la aplicación."""
+    _inyectar_css()
+    st.markdown(compactar_html(_marca_html(PERFIL)), unsafe_allow_html=True)
+
+
 def render_header(perfil: Perfil) -> None:
-    """Pinta la marca LEX y la cabecera principal del inicio."""
-    st.markdown(f"<style>{_CSS_PATH.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
-    st.markdown(compactar_html(_marca_html(perfil)), unsafe_allow_html=True)
+    """Pinta la cabecera principal (hero) del inicio."""
+    _inyectar_css()
     st.markdown(compactar_html(_build_html(perfil)), unsafe_allow_html=True)
 
 

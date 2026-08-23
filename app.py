@@ -12,12 +12,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import streamlit as st
 
 from controllers.main_controller import mostrar_paginas_en_pestanas, mostrar_pie_de_pagina
+from views.components.header_view import render_marca
 
 st.set_page_config(
     page_title="LEX · Luis Eduardo Sanchez Camargo",
     page_icon="⚖️",
     layout="wide",
 )
+
+# --- Marca LEX global (sobre la barra de secciones) ---
+render_marca()
 
 # --- Páginas en pestañas superiores (MVC) ---
 mostrar_paginas_en_pestanas()
