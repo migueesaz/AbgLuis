@@ -116,3 +116,11 @@
     border-radius: 12px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
+
+.inicio-reel__video--ig {
+    aspect-ratio: 4 / 5;
+    border: none;
+    border-bottom: none;
+    box-shadow: none;
+    background: #0C1830;
+}

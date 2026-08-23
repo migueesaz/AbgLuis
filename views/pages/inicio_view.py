@@ -19,6 +19,7 @@ _CSS_PATH = Path(__file__).resolve().parents[1] / "styles" / "inicio.css"
 _YT_PATRON = re.compile(
     r"(?:youtu\.be/|youtube\.com/(?:watch\?v=|shorts/|embed/))([\w-]{11})"
 )
+_IG_PATRON = re.compile(r"instagram\.com/(?:reel|p|tv|reels)/([\w-]+)")
 _ROOT = Path(__file__).resolve().parents[2]
 
 _PUNTOS_CLAVE = (
@@ -46,8 +47,14 @@ def _youtube_id(url: str) -> str | None:
     return m.group(1) if m else None
 
 
-def _fuente_video() -> tuple[str, bool] | None:
-    """Devuelve (src, es_youtube) o None si no hay video disponible."""
+def _instagram_id(url: str) -> str | None:
+    """Extrae el ID de un enlace de Instagram (reel, post o IGTV)."""
+    m = _IG_PATRON.search(url)
+    return m.group(1) if m else None
+
+
+def _fuente_video() -> tuple[str, str] | None:
+    """Devuelve (src, tipo) donde tipo es youtube|instagram|directo."""
     fuente = VIDEO_PRINCIPAL.fuente
     if not fuente:
         return None
@@ -59,14 +66,17 @@ def _fuente_video() -> tuple[str, bool] | None:
                 f"?autoplay=1&mute=1&loop=1&playlist={yt_id}"
                 f"&playsinline=1&rel=0"
             )
-            return src, True
-        return fuente, False
+            return src, "youtube"
+        ig_id = _instagram_id(fuente)
+        if ig_id:
+            return f"https://www.instagram.com/reel/{ig_id}/embed/caption/0", "instagram"
+        return fuente, "directo"
     ruta = _ROOT / fuente
     if not ruta.exists():
         return None
     mime = mimetypes.guess_type(ruta.name)[0] or "video/mp4"
     b64 = base64.b64encode(ruta.read_bytes()).decode()
-    return f"data:{mime};base64,{b64}", False
+    return f"data:{mime};base64,{b64}", "directo"
 
 
 def _render_video() -> None:
@@ -91,11 +101,16 @@ def _render_video() -> None:
     if VIDEO_PRINCIPAL.descripcion:
         st.caption(VIDEO_PRINCIPAL.descripcion)
 
-    src, es_youtube = fuente
-    if es_youtube:
+    src, tipo = fuente
+    if tipo == "youtube":
         reproductor = (
             f'<iframe class="inicio-reel__video" src="{src}" '
             'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'
+        )
+    elif tipo == "instagram":
+        reproductor = (
+            f'<iframe class="inicio-reel__video inicio-reel__video--ig" src="{src}" '
+            'scrolling="no" allowfullscreen></iframe>'
         )
     else:
         reproductor = (
