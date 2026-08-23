@@ -18,7 +18,7 @@ class Perfil:
 
 PERFIL = Perfil(
     nombre="Luis Eduardo Sanchez Camargo",
-    titulo="Especialista en Derecho Penal | Exfiscal del Ministerio Público",
+    titulo="Especialista en Derecho Penal y Procesal Penal | Fiscal Jubilado del Ministerio Público",
     foto_ruta="assets/foto_perfil.jpg",
     descripcion=(
         "[PLACEHOLDER — Descripción profesional pendiente de aprobación] "

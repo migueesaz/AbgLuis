@@ -9,7 +9,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from models.media_model import VIDEO_PRINCIPAL
+from models.media_model import IMAGEN_VIDEO, VIDEO_PRINCIPAL
 from models.perfil_model import PERFIL
 from views.components.header_view import render_header
 from views.utils_html import compactar_html
