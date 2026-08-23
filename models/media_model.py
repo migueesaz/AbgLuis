@@ -16,5 +16,5 @@ class VideoConfig:
 VIDEO_PRINCIPAL = VideoConfig(
     titulo="Conoce mi práctica",
     descripcion="Un vistazo a mi experiencia y a mi forma de trabajar.",
-    fuente="https://www.instagram.com/reel/DX-wxm7Oq58/",
+    fuente="templates/Video Luis.mp4",
 )
