@@ -9,7 +9,7 @@ from dataclasses import dataclass, field
 class FooterConfig:
     """Configuración inmutable del pie de página."""
 
-    nombre_entidad: str = "Proyecto ABG · Luis"
+    nombre_entidad: str = "LEX · Luis Eduardo Sanchez Camargo"
     eslogan: str = "Seriedad. Temple. Compromiso profesional."
     anio: int = 2026
     version: str = "v1.0.0"

@@ -60,6 +60,7 @@ def _build_html(perfil: Perfil) -> str:
     <header class="hero-header">
         {foto_html}
         <div class="hero-header__contenido">
+            <div class="hero-header__marca">{perfil.marca}</div>
             <h1 class="hero-header__nombre">{perfil.nombre}</h1>
             <p class="hero-header__titulo">{titulo}</p>
             {descripcion_html}

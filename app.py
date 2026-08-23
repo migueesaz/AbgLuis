@@ -14,7 +14,7 @@ import streamlit as st
 from controllers.main_controller import mostrar_paginas_en_pestanas, mostrar_pie_de_pagina
 
 st.set_page_config(
-    page_title="Proyecto ABG · Luis",
+    page_title="LEX · Luis Eduardo Sanchez Camargo",
     page_icon="⚖️",
     layout="wide",
 )

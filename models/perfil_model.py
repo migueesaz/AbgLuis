@@ -10,6 +10,7 @@ class Perfil:
     nombre: str
     titulo: str
     foto_ruta: str  # relativa a la raíz del proyecto
+    marca: str = "LEX"
     descripcion: str = ""  # párrafo de presentación profesional
     whatsapp_numero: str = ""  # solo dígitos, con código de país
     whatsapp_mensaje: str = "Hola, me gustaría agendar una consulta."
