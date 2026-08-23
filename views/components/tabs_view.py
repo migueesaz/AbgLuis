@@ -45,15 +45,13 @@ def render_tabs() -> dict[str, object]:
     """Devuelve {id_de_pagina: contenedor_de_pestaña}.
 
     Si la página no tiene título, la pestaña muestra solo el ícono.
-    Los botones de redes se alinean a la derecha de la barra.
+    Los botones de redes se pintan primero, en su propia fila alineada
+    a la derecha: así aparecen de inmediato también en móvil.
     """
     st.markdown(f"<style>{_CSS_PATH.read_text(encoding='utf-8')}</style>", unsafe_allow_html=True)
 
-    col_pestanas, col_redes = st.columns([10, 1], vertical_alignment="top")
-    with col_redes:
-        st.markdown(compactar_html(_botones_redes_html()), unsafe_allow_html=True)
-    with col_pestanas:
-        etiquetas = [f"{p.icono} {p.titulo}".strip() for p in PAGINAS]
-        pestanas = st.tabs(etiquetas)
+    st.markdown(compactar_html(_botones_redes_html()), unsafe_allow_html=True)
 
+    etiquetas = [f"{p.icono} {p.titulo}".strip() for p in PAGINAS]
+    pestanas = st.tabs(etiquetas)
     return {p.id: cont for p, cont in zip(PAGINAS, pestanas)}
